@@ -11,16 +11,28 @@ const Notification = ({message}) => {
   )
 }
 
-const Country = ({country}) => {
-  
+const CountriesList = ({name, handleShow}) => {
   return (
     <div>
-      <h1>{country[0].name['common']}</h1>
-      <p>capital {country[0].capital[0]}</p>
-      <p>area {country[0].area}</p>
+      {name} <a className="btn" onClick={handleShow} href={`https://studies.cs.helsinki.fi/restcountries/api/name/${name}`}>show</a>
+    </div>
+  )
+}
+
+
+const Country = ({country}) => {
+  const {name, capital, area, languages, flags} = country
+  console.log(languages);
+  return (
+    <div>
+      <h1>{name['common']}</h1>
+      <p>capital {capital[0]}</p>
+      <p>area {area}</p>
       <p>languages:</p>
-      {country[0].languages}
-      <img src={country[0].flags['png']} />
+      {/* <Languages languages={languages} /> */}
+      
+      <img src={flags['png']} />
+      
     </div>
   )
 }
@@ -58,13 +70,22 @@ const App = () => {
     }
   }
 
-  console.log(countries)
+  const handleShow = (e) => {
+    e.preventDefault()
+    
+    axios
+    .get(e.target.href)
+    .then(res => setFilteredData(res.data))
+  }
+
+  console.log(filteredData);
 
   return (
+    
     <div>
       find countries <input value={getCountry} onChange={handleSearch} />
       <Notification message={message} />
-      {filteredData.length === 1 ? <Country country={filteredData} /> : filteredData.map((gc, i) => <p key={i}>{gc.name['common']}</p>)}
+      {filteredData.length === 1 ? <Country country={filteredData[0]} /> : filteredData.map((gc, i) => <CountriesList key={i} name={gc.name['common']} handleShow={handleShow}/>)}
     </div>
   )
 }
