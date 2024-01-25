@@ -19,7 +19,7 @@ const personSchema = new mongoose.Schema({
     number: String
 })
 
-const Person = new mongoose.model("Person", personSchema)
+const Person = new mongoose.model('Person', personSchema)
 
 if (process.argv[3] === undefined) {
     Person.find({}).then(result => {
@@ -37,6 +37,6 @@ const person = new Person({
 })
 
 person.save().then(result => {
-    console.log(`Added ${name} number ${number} to phonebook`);
+    console.log(`Added ${name} number ${number} to phonebook`)
     mongoose.connection.close()
 })
