@@ -45,7 +45,7 @@ const App = () => {
           .then(returnedPerson => setPersons(persons.map(p => p.id !== person.id ? p : returnedPerson)))
           .catch(err => {
             setToggleClass(false)
-            setResponseMessage(`Person ${person.name} was already removed from server`)
+            setResponseMessage(err.response.data.error)
             setTimeout(()=> {setResponseMessage(null)}, 5000)
           })
           setNewName('')
@@ -60,14 +60,19 @@ const App = () => {
         number: newNumber
       }
       
-      pesronService.addPerson(newPerson).then(returnedPerson => {
-        setPersons(persons.concat(returnedPerson))
-        setNewName('')
-        setNewNumber('') 
-        setToggleClass(true)
-        setResponseMessage(`Added ${returnedPerson.name}`)
-        setTimeout(()=> {setResponseMessage(null)}, 5000)
-      })
+      pesronService
+        .addPerson(newPerson)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('')
+          setNewNumber('') 
+          setToggleClass(true)
+          setResponseMessage(`Added ${returnedPerson.name}`)
+          setTimeout(()=> {setResponseMessage(null)}, 5000)
+        }).catch(err => {
+          setResponseMessage(err.response.data.error)
+          setTimeout(()=> {setResponseMessage(null)}, 5000)
+        })
     }
     
 

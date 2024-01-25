@@ -1,19 +1,28 @@
 GET http://localhost:3001/api/persons HTTP/1.1
 
 ###
-GET http://localhost:3001/api/persons/1 HTTP/1.1
+GET http://localhost:3001/info HTTP/1.1
 
 ###
-GET http://localhost:3001/api/persons/6 HTTP/1.1
+GET http://localhost:3001/api/persons/65b2602b2c5d8d33315de285 HTTP/1.1
 
 ###
-DELETE http://localhost:3001/api/persons/3 HTTP/1.1 
+DELETE http://localhost:3001/api/persons/65b2602b2c5d8d33315de285 HTTP/1.1 
 
 ###
 POST http://localhost:3001/api/persons/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "j",
+    "name": "James Gordon",
+    "number": 
+}
+
+###
+PUT http://localhost:3001/api/persons/65b26145e232a7863b4489b0 HTTP/1.1
+Content-Type: application/json
+
+{
+    
     "number": "050-1234566"
 }
