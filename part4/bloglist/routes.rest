@@ -1,0 +1,54 @@
+GET http://localhost:3003/api/blogs/ HTTP/1.1
+
+###
+GET http://localhost:3003/api/blogs/ HTTP/1.1
+
+###
+POST http://localhost:3003/api/blogs/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2Vybm1lIjoidGVzdGluZyIsImlkIjoiNjViNTQxMzNlZTBhODUyOGZmMDNlYmE4IiwiaWF0IjoxNzA2Mzg4OTU5LCJleHAiOjE3MDYzOTI1NTl9.9E7QI8eU0SMynN9rZH4F-ELziTSoQw4JpHKtrzKf8wg
+
+{
+    "title": "testing token middleware with VS rest client",
+    "author": "James Author",
+    "url": "http:?jauthor.com/rest-client",
+    "likes": 600,
+    "username": "testing"
+    
+}
+
+###
+PUT http://localhost:3003/api/blogs/65b4243750c647a1fe16618d HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Posting with VS rest client",
+    "author": "James Author",
+    "url": "http:?jauthor.com/rest-client",
+    "likes": 600
+}
+
+###
+DELETE http://localhost:3003/api/blogs/65b56a673ef8888b579b825d HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2Vybm1lIjoidGVzdGluZyIsImlkIjoiNjViNTQxMzNlZTBhODUyOGZmMDNlYmE4IiwiaWF0IjoxNzA2Mzg4OTU5LCJleHAiOjE3MDYzOTI1NTl9.9E7QI8eU0SMynN9rZH4F-ELziTSoQw4JpHKtrzKf8wg
+###
+GET http://localhost:3003/api/users/ HTTP/1.1
+
+###
+POST http://localhost:3003/api/users/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "testingjwt",
+    "name": "testing123",
+    "password": "testingjwt1234"
+}
+
+###
+POST http://localhost:3003/api/login/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "testing",
+    "password": "testing1234"
+}
