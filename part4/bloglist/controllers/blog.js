@@ -20,7 +20,7 @@ blogRouter.get('/', async (request, response) => {
   
 blogRouter.post('/', userExtractor, async (request, response) => {
   const {title, author, url, likes} = request.body
-console.log(request.body);
+
   const blog = new Blog({
     title,
     author,
